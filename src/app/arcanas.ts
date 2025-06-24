@@ -95,7 +95,6 @@ let centaurCondition = (arcanas: Arcana[]) => {
 }
 
 let queenCondition = (arcanas: Arcana[]) => {
-  //find all except self
   const activated = arcanas.filter(a => a instanceof SelectableArcana && a.isActive());
   if (activated.length == 0) {
     return false
@@ -130,7 +129,6 @@ let judjementCondition = (arcanas: Arcana[]) => {
 
 let divinityCondition = (arcanas: Arcana[]) => {
   const idMap = new Map(arcanas
-    // .filter(a => a instanceof SelectableArcana)
     .map(a => [a.id, a]));
 
   // Check rows
@@ -161,13 +159,13 @@ export class Deck {
         1,
         'The Sorceress',
         1,
-        'Your Ω Moves are 20/25/30/35% faster.'
+        'Your Ω Moves are 20/<span class="text-rare">25</span>/<span class="text-epic">30</span>/<span class="text-legendary">35%</span> faster.'
       ),
       new SelectableArcana(
         2,
         'The Wayward Son',
         1,
-        'After you exit a Location, restore 3/4/5/6 ❤.'
+        'After you exit a Location, restore 3/<span class="text-rare">4</span>/<span class="text-epic">5</span>/<span class="text-legendary">6%</span> <img class="inline-block" src="health.webp" alt="asd"/>.'
       ),
       new SelectableArcana(
         3,
@@ -283,7 +281,7 @@ export class Deck {
         21,
         'The Fates   ',
         0,
-        'You have +2/+3/+4/+5Change of Fate. ',
+        'You have +2/+3/+4/+5  Change of Fate. ',
         () => this.arcanas(),
         fatesCondition
       ), new SelectableArcana(
@@ -295,7 +293,7 @@ export class Deck {
         23,
         'Strength  ',
         4,
-        'While you have no Death Defiance Death Defiance, you take -30%/-40%/-50%/-60% damage and deal +25%. '
+        'While you have no Death Defiance, you take -30%/-40%/-50%/-60% damage and deal +25%. '
       ), new ConditionArcana(
         24,
         'Divinity  ',

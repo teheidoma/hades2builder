@@ -1,4 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@theme {
+  --font-base: 'Ubuntu', sans-serif;
+  --color-rare: #008aff;
+  --color-epic: #9d12ff;
+  --color-legendary: #F86059;
+}
 
 .custom-grad {
   background: linear-gradient(
@@ -7,4 +15,8 @@
     rgba(33, 224, 179, 0.5) 30%,
     rgba(33, 224, 179, 0.1) 70%
   );
+}
+.grad {
+  background: #0B0A0A;
+  background: linear-gradient(54deg, rgba(30, 29, 43, 1) 0%, rgba(30, 84, 74, 1) 50%, rgba(53, 144, 101, 1) 80%) fixed no-repeat;
 }

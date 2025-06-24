@@ -1,7 +1,6 @@
-import {Component, computed, inject, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {NgClass} from '@angular/common';
 import {Arcana, ArcanaType, Deck, SelectableArcana} from './arcanas';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -32,15 +31,18 @@ export class App implements OnInit {
   }
 
   recalculateCode() {
-    // this.code = btoa(this.deck().arcanas()
-    //   .filter(arcana => arcana.getType() === ArcanaType.SELECTABLE && arcana.isActive())
-    //   .map(ids => ids.id)
-    //   .join(','))
     let ids = this.deck().arcanas()
       .filter(arcana => arcana.getType() === ArcanaType.SELECTABLE && arcana.isActive())
       .map(ids => ids.id);
-    this.code =  window.location.host + '#' + this.encodeSet(ids).toString()
-    location.hash = this.encodeSet(ids).toString()
+    let encoded = this.encodeSet(ids).toString();
+    this.code = 'https://' + window.location.host + '#' + encoded
+    location.hash = encoded
+  }
+
+  copy() {
+    navigator.clipboard.write([new ClipboardItem({
+      'text/plain': this.code
+    })])
   }
 
   encodeSet(numbers: number[]): number {

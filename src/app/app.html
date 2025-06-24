@@ -1,5 +1,5 @@
-<div class="h-screen w-screen p-5  grid md:grid-cols-1 lg:grid-cols-3">
-  <div class="grid grid-cols-5 grid-rows-5 gap-5">
+<div class="h-screen text-white font-bold font-base w-full p-2 grid md:grid-cols-1 lg:grid-cols-3">
+  <div class="grid grid-cols-5 grid-rows-5 gap-5 p-5">
     @for (arcana of deck().arcanas(); track arcana.id) {
       <div
         [ngClass]="{
@@ -22,16 +22,34 @@
       </div>
     }
   </div>
-  <div class="flex flex-col items-center justify-center">
-    @if (selectedArcana) {
-      <img class="h-56" [src]="selectedArcana.id+'.webp'"/>
-      <div>{{ selectedArcana.name }}</div>
-      <div>{{ selectedArcana.isActive() }}</div>
-      <div>{{ selectedArcana.description }}</div>
-    }
+  <div class="flex flex-col h-full items-center">
+    <!-- Heading pinned to top -->
+    <h2 class="text-4xl mt-6">Hades 2 Deck Builder</h2>
+
+    <!-- Spacer pushes rest to center -->
+    <div class="flex-1 flex flex-col items-center justify-center gap-5">
+      @if (selectedArcana) {
+        <img class="h-56 mb-4" [src]="selectedArcana.id + '.webp'" />
+        <div class="text-3xl">{{ selectedArcana.name }}</div>
+        <div class="text-center text-xl" [innerHtml]="selectedArcana.description"></div>
+      }
+    </div>
   </div>
-  <div>
-    {{ getTotalCost() }}
-    {{code}}
+  <div class="flex flex-col justify-between">
+    <div class="self-end p-5">
+      Total Cost: {{ getTotalCost() }}
+    </div>
+    <div class="flex flex-col gap-2">
+      <input class="h-12 text-xl font-normal border-2  border-[#6FBE94] bg-[#416e56] shadow-xl rounded-2xl p-3 text-gray-300" type="text" [value]="code">
+      <div class="text-gray-300 self-center cursor-pointer" (click)="copy()">Click to copy</div>
+    </div>
+    <div class="text-sm font-normal text-gray-400 text-center lg:text-right pt-12 ">
+      This is an unofficial fan site. Hades 2, its logos, characters, and assets are trademarks and copyrighted by
+      Supergiant Games. Not affiliated with or endorsed by Supergiant.
+      <br>
+      <br>
+      If you’re a rights holder and want us to remove or clarify content, please email teheidoma&commat;gmail.com.
+    </div>
   </div>
+
 </div>
