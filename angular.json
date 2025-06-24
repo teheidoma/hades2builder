@@ -17,6 +17,8 @@
             "polyfills": [
               "zone.js"
             ],
+            "outputPath": "dist/hades2builder",
+            "baseHref": "/hades2builder/",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {

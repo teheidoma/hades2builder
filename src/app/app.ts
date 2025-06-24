@@ -35,7 +35,9 @@ export class App implements OnInit {
       .filter(arcana => arcana.getType() === ArcanaType.SELECTABLE && arcana.isActive())
       .map(ids => ids.id);
     let encoded = this.encodeSet(ids).toString();
-    this.code = 'https://' + window.location.host + '#' + encoded
+    let href = location.href;
+    href = href.substring(0, href.lastIndexOf('#'));
+    this.code = href + '#' + encoded
     location.hash = encoded
   }
 
