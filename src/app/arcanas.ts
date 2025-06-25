@@ -9,7 +9,7 @@ export interface Arcana {
   name: string;
   cost: number;
   description: string;
-
+  awakening: string;
   isActive(): boolean;
 
   onClick(): void;
@@ -28,6 +28,7 @@ export class SelectableArcana implements Arcana {
   cost: number;
   description: string;
   selected = false;
+  awakening: string;
   type = ArcanaType.SELECTABLE;
 
   constructor(id: number, name: string, cost: number, description: string) {
@@ -35,6 +36,7 @@ export class SelectableArcana implements Arcana {
     this.name = name;
     this.cost = cost;
     this.description = description;
+    this.awakening = '';
   }
 
   isActive(): boolean {
@@ -55,16 +57,18 @@ export class ConditionArcana implements Arcana {
   name: string;
   cost: number;
   description: string;
+  awakening: string;
   selected = false;
   condition: (arcanas: Arcana[], context?: EvaluationContext) => boolean;
   getArcanas: () => Arcana[];
   type = ArcanaType.CONDITIONAL;
 
-  constructor(id: number, name: string, cost: number, description: string, getArcanas: () => Arcana[], condition: (arcanas: Arcana[]) => boolean) {
+  constructor(id: number, name: string, cost: number, description: string, awakening: string, getArcanas: () => Arcana[], condition: (arcanas: Arcana[]) => boolean) {
     this.id = id;
     this.name = name;
     this.cost = cost;
     this.description = description;
+    this.awakening = awakening;
     this.condition = condition;
     this.getArcanas = getArcanas;
   }
@@ -184,6 +188,7 @@ export class Deck {
         'The Moon',
         0,
         'Your Hex also charges up automatically as though you used 1/<span class="text-rare">2</span>/<span class="text-epic">3</span>/<span class="text-legendary">4</span> <img src="magick.webp" class="inline-block" alt=""> every 1 sec.',
+        'Activate <span class="font-bold">any</span> surrounding card.',
         () => this.arcanas(),
         moonCondition
       ),
@@ -234,6 +239,7 @@ export class Deck {
         'The Centaur',
         0,
         'You gain +3/<span class="text-rare">+4</span>/<span class="text-epic">+5</span>/<span class="text-legendary">+6</span> <img src="lifeup.webp" class="inline-block" alt=""> and +3/<span class="text-rare">+4</span>/<span class="text-epic">+5</span>/<span class="text-legendary">+6</span> <img src="manaup.webp" class="inline-block" alt=""> whenever you pass through 5 Locations.',
+        'Activate Cards that use 1<img src="grasp.webp" class="inline-block" alt=""> through 5<img src="grasp.webp" class="inline-block" alt="">. ',
         () => this.arcanas(),
         centaurCondition
       ),
@@ -278,6 +284,7 @@ export class Deck {
         'The Queen',
         0,
         'Any Boons you are offered have +6%/<span class="text-rare">+8%</span>/<span class="text-epic">+10%</span>/<span class="text-legendary">+12%</span> chance to be a <span class="text-[#D2FF61]">Duo</span> (whenever possible).',
+        'Activate no more than 2 Cards that use the same amount of <img src="grasp.webp" class="inline-block" alt="">. ',
         () => this.arcanas(),
         queenCondition
       ),
@@ -286,6 +293,7 @@ export class Deck {
         'The Fates',
         0,
         'You have +2/<span class="text-rare">+3</span>/<span class="text-epic">+4</span>/<span class="text-legendary">+5</span> <img src="dice.webp" class="inline-block" alt="">.',
+        'Activate all surrounding Cards. ',
         () => this.arcanas(),
         fatesCondition
       ),
@@ -306,6 +314,7 @@ export class Deck {
         'Divinity',
         0,
         'Any Boons you are offered have +10%/<span class="text-rare">+15%</span>/<span class="text-epic">+20%</span>/<span class="text-legendary">+25%</span> chance to be improved to <span class="text-epic">Epic</span>.',
+        'Activate all <span class="font-bold">5</span> Cards in any other row or column. ',
         () => this.arcanas(),
         divinityCondition
       ),
@@ -314,6 +323,7 @@ export class Deck {
         'Judgement',
         0,
         'After you vanquish a Guardian, activate 3/<span class="text-rare">4</span>/<span class="text-epic">5</span>/<span class="text-legendary">6</span> random inactive Arcana Cards.',
+        'Activate no more than <span class="font-bold">3</span> cards total.',
         () => this.arcanas(),
         judjementCondition
       )

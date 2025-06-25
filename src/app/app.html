@@ -1,5 +1,5 @@
-<div class="h-screen text-white font-bold font-base w-full p-2 grid md:grid-cols-1 lg:grid-cols-3">
-  <h2 class="block lg:hidden text-4xl text-center">Hades 2 Deck Builder</h2>
+<div class="h-screen text-white font-base w-full p-2 grid md:grid-cols-1 lg:grid-cols-3">
+  <h2 class="block lg:hidden text-4xl font-bold text-center">Hades 2 Deck Builder</h2>
   <div class="block lg:hidden text-right p-5">
     Total Cost: {{ getTotalCost() }}
   </div>
@@ -28,7 +28,7 @@
   </div>
   <div class="flex flex-col h-full items-center">
     <!-- Heading pinned to top -->
-    <h2 class="hidden lg:block text-4xl mt-6">Hades 2 Deck Builder</h2>
+    <h2 class="hidden lg:block text-4xl font-bold mt-6">Hades 2 Deck Builder</h2>
 
     <!-- Spacer pushes rest to center -->
     <div class="flex-1 flex flex-col items-center justify-center gap-5">
@@ -36,6 +36,12 @@
         <img class="h-56 mb-4" [src]="selectedArcana.id + '.webp'" />
         <div class="text-3xl">{{ selectedArcana.name }}</div>
         <div class="text-center text-xl" [innerHtml]="selectedArcana.description"></div>
+        @if (selectedArcana.getType() == ArcanaType.CONDITIONAL){
+          <div class="text-center text-xl">
+            <span class="italic">Awakening: </span>
+            <span [innerHtml]="selectedArcana.awakening"></span>
+          </div>
+        }
       }
     </div>
   </div>
