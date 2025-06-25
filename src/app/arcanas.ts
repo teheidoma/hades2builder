@@ -171,19 +171,19 @@ export class Deck {
         3,
         'The Huntress',
         2,
-        'While you have less than 100% ❄, your Attack and Special deal +30%/+40%/+50%/+60% damage.'
+        'While you have less than 100% <img src="magick.webp" class="inline-block" alt="">, your Attack and Special deal +30%/<span class="text-rare">+40%</span>/<span class="text-epic">+50%</span>/<span class="text-legendary">+60%</span> damage.'
       ),
       new SelectableArcana(
         4,
         'Eternity',
         3,
-        'While you Channel your Ω Moves, everything moves slower for 0.8/1.0/1.2/1.5 sec.'
+        'While you Channel your Ω Moves, everything moves slower for 0.8/<span class="text-rare">1.0</span>/<span class="text-epic">1.2</span>/<span class="text-legendary">1.5</span> sec.'
       ),
       new ConditionArcana(
         5,
         'The Moon',
         0,
-        'Your Hex also charges up automatically as though you used 1/2/3/4 every 1 sec.',
+        'Your Hex also charges up automatically as though you used 1/<span class="text-rare">2</span>/<span class="text-epic">3</span>/<span class="text-legendary">4</span> <img src="magick.webp" class="inline-block" alt=""> every 1 sec.',
         () => this.arcanas(),
         moonCondition
       ),
@@ -191,49 +191,49 @@ export class Deck {
         6,
         'The Furies',
         2,
-        'You deal +20%/+25%/+30%/+35% damage to foes in your Casts.'
+        'You deal +20%/<span class="text-rare">+25%</span>/<span class="text-epic">+30%</span>/<span class="text-legendary">+35%</span> damage to foes in your Casts.'
       ),
       new SelectableArcana(
         7,
         'Persistence',
         2,
-        'You have +20/+30/+40/+50 💀 and +20/+30/+40/+50 ❄.'
+        'You have +20/<span class="text-rare">+30</span>/<span class="text-epic">+40</span>/<span class="text-legendary">+50</span> <img src="lifeup.webp" class="inline-block" alt=""> and +20/<span class="text-rare">+30</span>/<span class="text-epic">+40</span>/<span class="text-legendary">+50</span> <img src="manaup.webp" class="inline-block" alt="">.'
       ),
       new SelectableArcana(
         8,
         'The Messenger',
         1,
-        'Your Casts momentarily make you Impervious and move 50%/60%/70%/80% faster.'
+        'Your Casts momentarily make you Impervious and move 50%/<span class="text-rare">60%</span>/<span class="text-epic">70%</span>/<span class="text-legendary">80%</span> faster.'
       ),
       new SelectableArcana(
         9,
         'The Unseen',
         5,
-        'You restore 4/5/6/7 💙 every 1 sec.'
+        'You restore 4/<span class="text-rare">5</span>/<span class="text-epic">6</span>/<span class="text-legendary">7</span> <img src="magick.webp" class="inline-block" alt=""> every 1 sec.'
       ),
       new SelectableArcana(
         10,
         'Night',
         2,
-        'You have +9%/+12%/+15%/+18% chance to deal Critical damage with each move in an Ω Combo.'
+        'You have +9%/<span class="text-rare">+12%</span>/<span class="text-epic">+15%</span>/<span class="text-legendary">+18%</span> chance to deal Critical damage with each move in an Ω Combo.'
       ),
       new SelectableArcana(
         11,
         'The Swift Runner',
         1,
-        'Your Sprint is 5%/7%/10%/13% faster and lets you pass right through most dangers in your way.'
+        'Your Sprint is 5%/<span class="text-rare">7%</span>/<span class="text-epic">10%</span>/<span class="text-legendary">13%</span> faster and lets you pass right through most dangers in your way.'
       ),
       new SelectableArcana(
         12,
         'Death',
         4,
-        'You have +1/+2/+3/+4 ⚰ Death Defiance.'
+        'You have +1/<span class="text-rare">+2</span>/<span class="text-epic">+3</span>/<span class="text-legendary">+4</span> <img src="death.webp" class="inline-block" alt=""> Death Defiance.'
       ),
       new ConditionArcana(
         13,
         'The Centaur',
         0,
-        'You gain +3/+4/+5/+6 ❤️ and +3/+4/+5/+6 💙 whenever you pass through 5 Locations.',
+        'You gain +3/<span class="text-rare">+4</span>/<span class="text-epic">+5</span>/<span class="text-legendary">+6</span> <img src="lifeup.webp" class="inline-block" alt=""> and +3/<span class="text-rare">+4</span>/<span class="text-epic">+5</span>/<span class="text-legendary">+6</span> <img src="manaup.webp" class="inline-block" alt=""> whenever you pass through 5 Locations.',
         () => this.arcanas(),
         centaurCondition
       ),
@@ -241,75 +241,83 @@ export class Deck {
         14,
         'Origination',
         5,
-        'You deal +25%/+38%/+50%/+63% damage to foes afflicted with at least 2 Curses from different Olympians.'
+        'You deal +25%/<span class="text-rare">+38%</span>/<span class="text-epic">+50%</span>/<span class="text-legendary">+63%</span> damage to foes afflicted with at least 2 Curses from different Olympians.'
       ),
       new SelectableArcana(
         15,
         'The Lovers ',
         3,
-        'You take 0 damage the first 1/2/3/4 time(s) you are hit in Guardian Encounter. '
+        'You take 0 damage the first 1/<span class="text-rare">2</span>/<span class="text-epic">3</span>/<span class="text-legendary">4</span> time(s) you are hit in Guardian Encounter.'
       ),
       new SelectableArcana(
         16,
         'The Enchantress ',
         3,
-        'You have +1/+2/+3/+4 Change of Fate, and can alter Location Rewards. '
+        'You have +1/<span class="text-rare">+2</span>/<span class="text-epic">+3</span>/<span class="text-legendary">+4</span> <img src="dice.webp" class="inline-block" alt="">, and can alter Location Rewards.'
       ),
       new SelectableArcana(
         17,
-        'The Boatman  ',
+        'The Boatman',
         5,
-        'You have +200/+250/+300/+350Gold.'
-      ), new SelectableArcana(
+        'You have +200/<span class="text-rare">+250</span>/<span class="text-epic">+300</span>/<span class="text-legendary">+350</span> <img src="gold.webp" class="inline-block" alt="">.'
+      ),
+      new SelectableArcana(
         18,
-        'The Artificer   ',
+        'The Artificer',
         3,
-        'You have 1/2/3/4 chance(s) this night to turn any Minor Find into a random Major Find. '
-      ), new SelectableArcana(
+        'You have 1/<span class="text-rare">2</span>/<span class="text-epic">3</span>/<span class="text-legendary">4</span> chance(s) this night to turn any Minor Find into a random Major Find.'
+      ),
+      new SelectableArcana(
         19,
         'Excellence',
         5,
-        'Any Boons you find have +30%/+40%/+50%/+60% chance to include Legendary or at least Rare blessings. '
-      ), new ConditionArcana(
+        'Any Boons you find have +30%/<span class="text-rare">+40%</span>/<span class="text-epic">+50%</span>/<span class="text-legendary">+60%</span> chance to include <span class="text-legendary">Legendary</span> or at least <span class="text-rare">Rare</span> blessings.'
+      ),
+      new ConditionArcana(
         20,
-        'The Queen   ',
+        'The Queen',
         0,
-        'Any Boons you are offered have +6%/+8%/+10%/+12% chance to be a Duo (whenever possible). ',
+        'Any Boons you are offered have +6%/<span class="text-rare">+8%</span>/<span class="text-epic">+10%</span>/<span class="text-legendary">+12%</span> chance to be a <span class="text-[#D2FF61]">Duo</span> (whenever possible).',
         () => this.arcanas(),
         queenCondition
-      ), new ConditionArcana(
+      ),
+      new ConditionArcana(
         21,
-        'The Fates   ',
+        'The Fates',
         0,
-        'You have +2/+3/+4/+5  Change of Fate. ',
+        'You have +2/<span class="text-rare">+3</span>/<span class="text-epic">+4</span>/<span class="text-legendary">+5</span> <img src="dice.webp" class="inline-block" alt="">.',
         () => this.arcanas(),
         fatesCondition
-      ), new SelectableArcana(
+      ),
+      new SelectableArcana(
         22,
-        'The Champions ',
+        'The Champions',
         4,
-        'You have +1/+2/+3/+4Change of Fate, and can alter Boons and certain other choices. '
-      ), new SelectableArcana(
+        'You have +1/<span class="text-rare">+2</span>/<span class="text-epic">+3</span>/<span class="text-legendary">+4</span> <img src="dice.webp" class="inline-block" alt="">, and can alter Boons and certain other choices.'
+      ),
+      new SelectableArcana(
         23,
-        'Strength  ',
+        'Strength',
         4,
-        'While you have no Death Defiance, you take -30%/-40%/-50%/-60% damage and deal +25%. '
-      ), new ConditionArcana(
+        'While you have no <img src="death.webp" class="inline-block" alt="">, you take -30%/<span class="text-rare">-40%</span>/<span class="text-epic">-50%</span>/<span class="text-legendary">-60%</span> damage and deal <span class="text-[#73C745]">+25%</span>.'
+      ),
+      new ConditionArcana(
         24,
-        'Divinity  ',
+        'Divinity',
         0,
-        'Any Boons you are offered have +10%/+15%/+20%/+25% chance to be improved to Epic. ',
+        'Any Boons you are offered have +10%/<span class="text-rare">+15%</span>/<span class="text-epic">+20%</span>/<span class="text-legendary">+25%</span> chance to be improved to <span class="text-epic">Epic</span>.',
         () => this.arcanas(),
         divinityCondition
-      ), new ConditionArcana(
+      ),
+      new ConditionArcana(
         25,
-        'Judgement  ',
+        'Judgement',
         0,
-        'After you vanquish a Guardian, activate 3/4/5/6 random inactive Arcana Cards.',
+        'After you vanquish a Guardian, activate 3/<span class="text-rare">4</span>/<span class="text-epic">5</span>/<span class="text-legendary">6</span> random inactive Arcana Cards.',
         () => this.arcanas(),
         judjementCondition
       )
-    ])
+    ]);
   }
 
   public click(id: number) {
