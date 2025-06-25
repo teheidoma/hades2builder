@@ -18,7 +18,6 @@
               "zone.js"
             ],
             "outputPath": "dist/hades2builder",
-            "baseHref": "/hades/",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
