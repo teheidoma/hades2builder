@@ -50,6 +50,7 @@
     <div class="flex flex-col gap-2">
       <input class="h-12 text-xl font-normal border-2  border-[#6FBE94] bg-[#416e56] shadow-xl rounded-2xl p-3 text-gray-300" type="text" [value]="code">
       <div class="text-gray-300 self-center cursor-pointer" (click)="copy()">Click to copy</div>
+      <div class="text-gray-300 self-center cursor-pointer" (click)="saveAsImage(grid)">Save as image</div>
     </div>
     <div class="text-sm font-normal text-gray-400 text-center lg:text-right pt-12 ">
       This is an unofficial fan site. Hades 2, its logos, characters, and assets are trademarks and copyrighted by
@@ -60,4 +61,27 @@
     </div>
   </div>
 
+</div>
+<div #grid class="absolute grad top-[-90000px] left-[-90000px] -z-10 pointer-events-none grid grid-cols-5 grid-rows-5 gap-5 p-5">
+  @for (arcana of deck().arcanas(); track arcana.id) {
+    <div
+      [ngClass]="{
+          'cursor-not-allowed': arcana.getType() == ArcanaType.CONDITIONAL,
+          'cursor-pointer': arcana.getType() == ArcanaType.SELECTABLE
+        }"
+      class="relative hover:scale-125 transition-all"
+      (click)="deck().click(arcana.id); recalculateCode()"
+      (mouseenter)="onHover(arcana)"
+    >
+      <img class="h-full" [src]="arcana.id+'.webp'">
+
+      @if (arcana.isActive()) {
+        <div class="absolute w-full h-full custom-grad left-0 top-0 inline-block"></div>
+      }
+      <div class="absolute h-16 w-16 -right-3 -top-3 bg-black border-3 border-blue-950 rounded-full text-center">
+
+        <span class="font-bold text-5xl text-center text-white">{{ arcana.cost }}</span>
+      </div>
+    </div>
+  }
 </div>

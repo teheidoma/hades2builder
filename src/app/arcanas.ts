@@ -85,7 +85,6 @@ export class ConditionArcana implements Arcana {
 }
 
 let centaurCondition = (arcanas: Arcana[]) => {
-  console.log("centaur");
   const costs = new Set(arcanas
     .filter(a => a instanceof SelectableArcana && a.isActive())
     .map(arcana => arcana.cost));
@@ -130,7 +129,6 @@ let moonCondition = (arcanas: Arcana[]) => {
 
 let judjementCondition = (arcanas: Arcana[]) => {
   let count = arcanas.filter(a => a instanceof SelectableArcana && a.isActive()).length;
-  console.log("count ", count)
   return count > 0 && count <= 3;
 }
 

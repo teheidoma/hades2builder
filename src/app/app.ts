@@ -1,6 +1,9 @@
 import {Component, OnInit, signal} from '@angular/core';
 import {NgClass} from '@angular/common';
 import {Arcana, ArcanaType, Deck, SelectableArcana} from './arcanas';
+import {fromPromise} from 'rxjs/internal/observable/innerFrom';
+import {map} from 'rxjs';
+import html2canvas from 'html2canvas-pro';
 
 @Component({
   selector: 'app-root',
@@ -66,5 +69,19 @@ export class App implements OnInit {
     return this.deck().arcanas()
       .filter(a => a instanceof SelectableArcana && a.isActive())
       .reduce((a, b) => a + b.cost, 0)
+  }
+
+  saveAsImage(div: HTMLDivElement) {
+    fromPromise(html2canvas(div, {
+    }))
+      .pipe(
+        map(canvas => canvas.toDataURL('image/png'))
+      )
+      .subscribe(url => {
+        let link = document.createElement('a');
+        link.href = url
+        link.download = 'arcanas.png'
+        link.click()
+      })
   }
 }
