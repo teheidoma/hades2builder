@@ -1,59 +1,34 @@
-# Untitled
+# 🔮 Hades II Builder
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+### 🌐 [hades.teheidoma.space](https://hades.teheidoma.space)
 
-## Development server
+A small fan-made web tool that lets you **create**, **save**, and **share your Arcana builds** with others in the Hades II community. It's fast, lightweight, and focused purely on helping you theorycraft and showcase your favorite combinations.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## ✨ Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+✅ Create your own Arcana build
+✅ Share builds via link
+✅ Mobile-friendly design
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠 Planned Features (if there's interest!)
 
-```bash
-ng generate component component-name
-```
+* 🌍 **Localization** – support for multiple languages
+* 🧙 **Arcana Levels** – choose the level for each Arcana
+* ⚗️ **Material Calculator** – estimate the resources needed to level up
+* 🌐 **Global Build List** – browse and explore builds created by other players
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 💡 Why?
 
-## Building
+Because I love Hades II and wanted a quick way to theorycraft Arcana combos and send them to friends. If you're using the site and enjoying it, feel free to reach out — feedback or ideas are welcome!
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🚧 Disclaimer
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is fan-made and not affiliated with Supergiant Games. All game assets, names, and concepts are property of their respective owners.
