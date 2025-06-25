@@ -1,9 +1,5 @@
 import {signal} from '@angular/core';
 
-class EvaluationContext {
-  visiting = new Set<number>();
-}
-
 export interface Arcana {
   id: number;
   name: string;
@@ -59,11 +55,11 @@ export class ConditionArcana implements Arcana {
   description: string;
   awakening: string;
   selected = false;
-  condition: (arcanas: Arcana[], context?: EvaluationContext) => boolean;
+  condition: (arcanas: Arcana[], ignoredIds: number[]) => boolean;
   getArcanas: () => Arcana[];
   type = ArcanaType.CONDITIONAL;
 
-  constructor(id: number, name: string, cost: number, description: string, awakening: string, getArcanas: () => Arcana[], condition: (arcanas: Arcana[]) => boolean) {
+  constructor(id: number, name: string, cost: number, description: string, awakening: string, getArcanas: () => Arcana[], condition: (arcanas: Arcana[], ignoredIds: number[]) => boolean) {
     this.id = id;
     this.name = name;
     this.cost = cost;
@@ -73,8 +69,11 @@ export class ConditionArcana implements Arcana {
     this.getArcanas = getArcanas;
   }
 
-  isActive(context: EvaluationContext = new EvaluationContext()): boolean {
-    return this.condition(this.getArcanas())
+  isActive(ignoreIds: number[] = []): boolean {
+    if (ignoreIds.length === 0) {
+      ignoreIds.push(this.id);
+    }
+    return this.condition(this.getArcanas().filter(a => ignoreIds?.indexOf(a.id) == -1), ignoreIds);
   }
 
   onClick(): void {
@@ -86,6 +85,7 @@ export class ConditionArcana implements Arcana {
 }
 
 let centaurCondition = (arcanas: Arcana[]) => {
+  console.log("centaur");
   const costs = new Set(arcanas
     .filter(a => a instanceof SelectableArcana && a.isActive())
     .map(arcana => arcana.cost));
@@ -117,9 +117,11 @@ let queenCondition = (arcanas: Arcana[]) => {
   return true;
 }
 
-let fatesCondition = (arcanas: Arcana[]) => {
+let fatesCondition = (arcanas: Arcana[], ignored: number[]) => {
+  ignored.push(21)
   return arcanas.find(a => a.id == 22)?.isActive()
     && arcanas.find(a => a.id == 16)?.isActive()
+    && arcanas.find(a => a.id == 17)?.isActive()
     || false
 }
 let moonCondition = (arcanas: Arcana[]) => {
@@ -128,17 +130,20 @@ let moonCondition = (arcanas: Arcana[]) => {
 
 let judjementCondition = (arcanas: Arcana[]) => {
   let count = arcanas.filter(a => a instanceof SelectableArcana && a.isActive()).length;
-  return count > 0 && count < 3;
+  console.log("count ", count)
+  return count > 0 && count <= 3;
 }
 
-let divinityCondition = (arcanas: Arcana[]) => {
+let divinityCondition = (arcanas: Arcana[], ignoredIds: number[]) => {
+  ignoredIds.push(24)
   const idMap = new Map(arcanas
     .map(a => [a.id, a]));
 
   // Check rows
   for (let row = 0; row < 5; row++) {
     const rowIds = Array.from({length: 5}, (_, i) => row * 5 + i + 1);
-    if (rowIds.every(id => idMap.get(id)?.isActive() || idMap.get(id) instanceof ConditionArcana)) {
+    if (rowIds.every(id => (idMap.get(id) instanceof ConditionArcana && (<ConditionArcana>idMap.get(id)).isActive(ignoredIds)
+      || idMap.get(id)?.isActive()))) {
       return true;
     }
   }
@@ -146,7 +151,8 @@ let divinityCondition = (arcanas: Arcana[]) => {
   // Check columns
   for (let col = 0; col < 5; col++) {
     const colIds = Array.from({length: 5}, (_, i) => col + 1 + i * 5);
-    if (colIds.every(id => idMap.get(id)?.isActive() || idMap.get(id) instanceof ConditionArcana)) {
+    if (colIds.every(id => (idMap.get(id) instanceof ConditionArcana && (<ConditionArcana>idMap.get(id)).isActive(ignoredIds))
+      || idMap.get(id)?.isActive())) {
       return true;
     }
   }
