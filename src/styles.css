@@ -11,12 +11,59 @@
 .custom-grad {
   background: linear-gradient(
     0deg,
-    rgb(7, 152, 196) 0%,
-    rgba(33, 173, 224, 0.5) 30%,
+    rgb(7, 152, 196, 0.5) 0%,
+    rgba(33, 173, 224, 0.3) 30%,
     rgba(33, 144, 224, 0.1) 70%
   );
 }
 .grad {
   background: #0B0A0A;
   background: linear-gradient(54deg, rgba(30, 29, 43, 1) 0%, rgba(30, 84, 74, 1) 50%, rgba(53, 144, 101, 1) 80%) fixed no-repeat;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spinBorder {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+.active-selection {
+  position: relative;
+  z-index: 0;
+}
+
+.active-selection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  background: conic-gradient(from var(--angle),
+  #00ffa3,
+  #00ffcc,
+  #00eaff,
+  #0077ff,
+  #004d80,
+  #00ffa3
+  );
+
+  animation: spinBorder 8s linear infinite;
+  --angle: 0deg;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  z-index: 0;
 }

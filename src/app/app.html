@@ -9,7 +9,7 @@
         [ngClass]="{
           'cursor-not-allowed': arcana.getType() == ArcanaType.CONDITIONAL,
           'cursor-pointer': arcana.getType() == ArcanaType.SELECTABLE,
-          'border-2 border-[#0baae8] shadow-[#0baae8] shadow': arcana.isActive()
+          'active-selection': arcana.isActive()
         }"
         class="relative hover:scale-125 transition-all"
         (click)="deck().click(arcana.id); recalculateCode()"
@@ -69,7 +69,7 @@
       [ngClass]="{
           'cursor-not-allowed': arcana.getType() == ArcanaType.CONDITIONAL,
           'cursor-pointer': arcana.getType() == ArcanaType.SELECTABLE,
-          'border-2 border-[#0baae8] shadow-[#0baae8] shadow': arcana.isActive()
+          'active-selection': arcana.isActive()
         }"
       class="relative hover:scale-125 transition-all"
       (click)="deck().click(arcana.id); recalculateCode()"
