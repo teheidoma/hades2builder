@@ -11,9 +11,9 @@
 .custom-grad {
   background: linear-gradient(
     0deg,
-    rgba(33, 224, 179, 1) 0%,
-    rgba(33, 224, 179, 0.5) 30%,
-    rgba(33, 224, 179, 0.1) 70%
+    rgb(7, 152, 196) 0%,
+    rgba(33, 173, 224, 0.5) 30%,
+    rgba(33, 144, 224, 0.1) 70%
   );
 }
 .grad {
