@@ -45,7 +45,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  padding: 3px;
+  padding: 5px;
+  box-shadow: 0 0 8px #00ffa3, 0 0 16px #00eaff;
+
   background: conic-gradient(from var(--angle),
   #00ffa3,
   #00ffcc,
@@ -65,5 +67,16 @@
   mask-composite: exclude;
 
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
 }
+
+.active-selection img {
+  position: relative;
+  z-index: 0;
+  transition: all 0.5s ease;
+  filter: brightness(1.3) saturate(1.3) hue-rotate(140deg);
+  box-shadow: inset 0 0 10px #00ffc3, inset 0 0 20px #00eaff;
+  border-radius: 12px;
+}
+
+

@@ -17,12 +17,8 @@
       >
         <img class="h-full" [src]="arcana.id+'.webp'">
 
-        @if (arcana.isActive()) {
-          <div class="absolute w-full h-full custom-grad left-0 top-0 inline-block"></div>
-        }
-        <div class="absolute h-7 w-7 -right-3 -top-3 bg-black border-3 border-blue-950 rounded-full text-center">
-
-          <span class="font-bold text-white">{{ arcana.cost }}</span>
+        <div class="absolute h-7 w-7 -right-3 -top-3 z-20 bg-black border-3 border-blue-950 rounded-full text-center">
+          <span class="font-bold text-white ">{{ arcana.cost }}</span>
         </div>
       </div>
     }
@@ -68,8 +64,7 @@
     <div
       [ngClass]="{
           'cursor-not-allowed': arcana.getType() == ArcanaType.CONDITIONAL,
-          'cursor-pointer': arcana.getType() == ArcanaType.SELECTABLE,
-          'active-selection': arcana.isActive()
+          'cursor-pointer': arcana.getType() == ArcanaType.SELECTABLE
         }"
       class="relative hover:scale-125 transition-all"
       (click)="deck().click(arcana.id); recalculateCode()"
@@ -80,7 +75,7 @@
       @if (arcana.isActive()) {
         <div class="absolute w-full h-full custom-grad left-0 top-0 inline-block"></div>
       }
-      <div class="absolute h-16 w-16 -right-3 -top-3 bg-black border-3 border-blue-950 rounded-full text-center">
+      <div class="absolute h-16 w-16 -right-3 -top-3 z-20 bg-black border-3 border-blue-950 rounded-full text-center">
 
         <span class="font-bold text-5xl text-center text-white">{{ arcana.cost }}</span>
       </div>
